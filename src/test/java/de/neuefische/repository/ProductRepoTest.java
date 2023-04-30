@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class ProductRepoTest {
 
@@ -25,7 +26,8 @@ class ProductRepoTest {
         Map<String, Product> actual = productRepo.list();
 
         // then
-        assertEquals(expected, actual);
+        //assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -43,7 +45,8 @@ class ProductRepoTest {
         Map<String, Product> actual = productRepo.list();
 
         // then
-        assertEquals(expected, actual);
+        //assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -64,7 +67,8 @@ class ProductRepoTest {
         }
 
         // then
-        assertEquals(expected, actual);
+        //assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -86,7 +90,8 @@ class ProductRepoTest {
         }
 
         // then
-        assertEquals(expected, actual);
+        //assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -100,6 +105,7 @@ class ProductRepoTest {
         productRepo.setProducts(productMap);
 
         // when & then
-        assertThrows(ProductNotFoundException.class, () -> productRepo.get("p3").get());
+        //assertThrows(ProductNotFoundException.class, () -> productRepo.get("p3").get());
+        assertThatThrownBy(() -> productRepo.get("p3").get()).isInstanceOf(ProductNotFoundException.class);
     }
 }
